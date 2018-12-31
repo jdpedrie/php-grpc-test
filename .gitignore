@@ -2,3 +2,5 @@ express/node_modules
 server/node_modules
 php/.idea
 php/vendor
+php/access.log
+php/error.log
