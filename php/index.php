@@ -12,13 +12,15 @@ $client = new \Example\ServiceClient("grpc_server:8080", [
 
 $app->get('/echo', function (Request $request, Response $response, array $args) use ($client) {
     $echoRequest = new \Example\EchoRequest();
-    $echoRequest->setMessage(uniqid());
+    $message = uniqid();
+    $echoRequest->setMessage($message);
 
     $call = $client->Echo($echoRequest);
     /** @var \Example\EchoResponse $echoResponse */
     $echoResponse = $call->wait()[0];
 
-    $response->getBody()->write($echoResponse->getMessage() . " took " . $echoResponse->getTime() . " ms");
+    $content = "Sent {$message} and recieved {$echoResponse->getMessage()} in {$echoResponse->getTime()} ms";
+    $response->getBody()->write($content);
 
     return $response;
 });

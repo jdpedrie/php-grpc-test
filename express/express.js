@@ -10,9 +10,11 @@ const app = express();
 const port = 8081;
 
 app.get('/echo', (req, res) => {
- client.echo({ message: msg() }, (err, response) => {
+ const message = msg();
+ client.echo({ message: message}, (err, response) => {
     if (!err) {
-      res.json(response);
+      console.log(response);
+      res.send(`Sent ${message} and recieved ${response.message} in ${response.time} ms`);
     } else {
       res.json(err);
     }
