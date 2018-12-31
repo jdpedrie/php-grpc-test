@@ -9,3 +9,4 @@ that is invoked in node, and a clien that is invoked in PHP.
 
 The GRPC server has one method, `echo`, which recieves a messages, sleeps to simulate work, and returns that message along
 with the timeout, for example: `{"message":"lui6obf0m5lvfyfis05ah","time":386}`. 
+
