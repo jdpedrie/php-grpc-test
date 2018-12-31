@@ -1,6 +1,9 @@
 express/node_modules
+express/echo.proto
 server/node_modules
+server/echo.proto
 php/.idea
 php/vendor
 php/access.log
 php/error.log
+php/echo.proto
