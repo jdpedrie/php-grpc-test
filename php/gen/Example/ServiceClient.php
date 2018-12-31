@@ -1,7 +1,7 @@
 <?php
 // GENERATED CODE -- DO NOT EDIT!
 
-namespace ;
+namespace Example;
 
 /**
  */
@@ -17,15 +17,15 @@ class ServiceClient extends \Grpc\BaseStub {
     }
 
     /**
-     * @param \EchoRequest $argument input argument
+     * @param \Example\EchoRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
      */
-    public function Echo(\EchoRequest $argument,
+    public function Echo(\Example\EchoRequest $argument,
       $metadata = [], $options = []) {
-        return $this->_simpleRequest('/Service/Echo',
+        return $this->_simpleRequest('/example.Service/Echo',
         $argument,
-        ['\EchoResponse', 'decode'],
+        ['\Example\EchoResponse', 'decode'],
         $metadata, $options);
     }
 
