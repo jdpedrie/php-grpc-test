@@ -1,0 +1,1 @@
+172.31.0.1 - - [31/Dec/2018:15:33:34 +0000] "GET /echo HTTP/1.1" 200 6 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
