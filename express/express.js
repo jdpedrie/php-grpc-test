@@ -1,5 +1,5 @@
 const grpc = require('grpc');
-const Service = grpc.load('echo.proto').Service;
+const Service = grpc.load('echo.proto').example.Service;
 const client = new Service('grpc_server:8080', grpc.credentials.createInsecure());
 
 //rando str

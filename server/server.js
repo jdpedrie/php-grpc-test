@@ -16,7 +16,7 @@ const args = {
     }
 };
 
-server.addService(proto.Service.service, args)
+server.addService(proto.example.Service.service, args)
 
 server.bind('0.0.0.0:8080', grpc.ServerCredentials.createInsecure());
 console.log('Server listening on port 8080');
