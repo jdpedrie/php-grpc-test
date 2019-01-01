@@ -29,4 +29,17 @@ class ServiceClient extends \Grpc\BaseStub {
         $metadata, $options);
     }
 
+    /**
+     * @param \Example\EchoRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     */
+    public function EchoStream(\Example\EchoRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_serverStreamRequest('/example.Service/EchoStream',
+        $argument,
+        ['\Example\EchoResponse', 'decode'],
+        $metadata, $options);
+    }
+
 }

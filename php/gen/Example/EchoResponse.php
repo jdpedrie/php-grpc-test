@@ -21,6 +21,10 @@ class EchoResponse extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>int32 time = 2;</code>
      */
     private $time = 0;
+    /**
+     * Generated from protobuf field <code>int32 index = 3;</code>
+     */
+    private $index = 0;
 
     /**
      * Constructor.
@@ -30,6 +34,7 @@ class EchoResponse extends \Google\Protobuf\Internal\Message
      *
      *     @type string $message
      *     @type int $time
+     *     @type int $index
      * }
      */
     public function __construct($data = NULL) {
@@ -77,6 +82,28 @@ class EchoResponse extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkInt32($var);
         $this->time = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 index = 3;</code>
+     * @return int
+     */
+    public function getIndex()
+    {
+        return $this->index;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 index = 3;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setIndex($var)
+    {
+        GPBUtil::checkInt32($var);
+        $this->index = $var;
 
         return $this;
     }

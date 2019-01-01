@@ -1,6 +1,7 @@
 <?php
-use \Psr\Http\Message\ServerRequestInterface as Request;
-use \Psr\Http\Message\ResponseInterface as Response;
+
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 require 'vendor/autoload.php';
 
@@ -23,6 +24,26 @@ $app->get('/echo', function (Request $request, Response $response, array $args) 
     $response->getBody()->write($content);
 
     return $response;
+});
+
+$app->get('/echo-stream', function (Request $request, Response $response, array $args) use ($client) {
+    $echoRequest = new \Example\EchoRequest();
+    $message = uniqid();
+    $echoRequest->setMessage($message);
+
+    $call = $client->EchoStream($echoRequest);
+    $responses = $call->responses();
+
+    $data = [];
+    /** @var \Example\EchoResponse $echoResponse */
+    foreach ($responses as $echoResponse) {
+        $data[] = [
+            'message' => $echoResponse->getMessage(),
+            'time' => $echoResponse->getTime(),
+            'index' => $echoResponse->getIndex()
+        ];
+    }
+    return $response->withJson($data);
 });
 
 $app->run();

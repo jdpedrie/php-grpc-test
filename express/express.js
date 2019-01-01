@@ -21,4 +21,22 @@ app.get('/echo', (req, res) => {
   });
 });
 
+app.get('/echo-stream', (req, res) => {
+ const message = msg();
+ const call = client.echoStream({ message: message});
+
+ const data = [];
+ call.on('data', (response) => {
+     data.push(response);
+     console.log(response);
+ });
+
+ call.on('end', () => {
+     res.json(data);
+ })
+});
+
+
+
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
