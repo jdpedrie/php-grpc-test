@@ -25,18 +25,17 @@ app.get('/echo-stream', (req, res) => {
  const message = msg();
  const call = client.echoStream({ message: message});
 
+ // Aggregate and log data as it streams i
  const data = [];
  call.on('data', (response) => {
      data.push(response);
      console.log(response);
  });
 
+ // Respond with data when server closes stream
  call.on('end', () => {
      res.json(data);
  })
 });
-
-
-
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

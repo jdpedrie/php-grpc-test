@@ -4,6 +4,7 @@ const proto = grpc.load('echo.proto');
 
 const server = new grpc.Server();
 
+// Creates a promise that writes to a grpc stream, and resolves when done
 const promiseTimeout = (index, call) => new Promise((res,rej) => {
     const time = Math.ceil(Math.random() * 1500);
     setTimeout(() => {
@@ -28,6 +29,7 @@ const args = {
         }, timeout);
     },
     echoStream: async (call) => {
+        // Create 20 responses, stream them, and call stream when all are done.
         const promises = new Array(20)
                             .fill(null)
                             .map((_,i) => promiseTimeout(i, call));
