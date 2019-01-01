@@ -7,7 +7,6 @@ that is invoked in node, and a client that is invoked in PHP.
 * The node client can be tested by making a GET request `localhost:8081`.
 * The php client can be tested by making a GET request to `localhost:8082`.
 
-
 ## Unary Call
 
 The GRPC server has a unary method, `echo`, which recieves a messages, sleeps to simulate work and returns that message along
