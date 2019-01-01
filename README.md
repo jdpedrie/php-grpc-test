@@ -4,13 +4,25 @@ This app spins up a dockerized environment containing a grpc server running in n
 that is invoked in node, and a client that is invoked in PHP.
 
 * The grpc server is running inside the docker container at port `8080`.
-* The node client can be tested by making a GET request `localhost:8081/echo`.
+* The node client can be tested by making a GET request `localhost:8081`.
 * The php client can be tested by making a GET request to `localhost:8082`.
 
-The GRPC server has one method, `echo`, which recieves a messages, sleeps to simulate work and returns that message along
+
+## Unary Call
+
+The GRPC server has a unary method, `echo`, which recieves a messages, sleeps to simulate work and returns that message along
 with the timeout, for example: `{"message":"lui6obf0m5lvfyfis05ah","time":386}`. 
 
 The client applications will return a message similar like: `Sent 5c2a529876c35 and recieved 5c2a529876c35 in 755 ms`.
+
+The unary call can be tested at `/echo` on each server.
+
+## Server Stream
+
+The GRPC server has a sever stream method `echoStream` which recieves the same message as the Unary call, and will generate
+twenty responses. 
+
+This stream can be tested at `/echo-stream` on each server.
 
 ## Setup
 
