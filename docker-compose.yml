@@ -1,0 +1,23 @@
+web:
+    image: nginx:latest
+    ports:
+        - "8080:80"
+    volumes:
+        - ./code:/code
+        - ./site.conf:/etc/nginx/conf.d/default.conf
+        - ./fpm.conf:/usr/local/etc/php-fpm.d/zz-gcp.conf
+    links:
+        - php
+php:
+    build: ./php-docker
+    volumes:
+        - ./php-docker/grpc.sh:/grpc.sh
+        - ./code:/code
+        - ./fpm.conf:/usr/local/etc/php-fpm.d/zz-gcp.conf
+composer:
+    restart: 'no'
+    image: composer/composer:php7
+    command: install
+    volumes:
+        - ./code:/code
+    working_dir: /code
